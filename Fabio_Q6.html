@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mariana</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet">
+  <style>
+
+    body{
+      font-family: 'Montserrat','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+      background: #0F2027;  /* fallback for old browsers */
+
+      color: white;
+    }
+
+    img{
+      width: 150px;
+    }
+
+    h1{
+      /* border: 2px solid greenyellow; */
+      padding: 10px;
+      font-size: 1.5rem;
+    }
+
+    div{
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1.6rem;
+    }
+
+    #botoes{
+      /* background-color: aqua; */
+      /* border: 2px dotted blue; */
+      /* width: 300px; */
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    #botoes input{
+      min-width: 300px;
+      flex: 1;
+      height: 50px;
+      border-radius: 10px;
+      font-size: 1.9rem;
+    }
+
+    #botoes input:hover{
+      background-color: cadetblue;
+      font-size: 2rem;
+    }
+
+    header{
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+
+    input{
+      background-color: #0F2027;
+      color: white;
+      border-bottom: 1px solid greenyellow;
+      border-right: 1px solid greenyellow;
+      font-size: 1.2rem;
+    }
+
+    label{
+      color: cadetblue;
+      /* background-color: blanchedalmond; */
+    }
+  </style>
+
+  <!-- <script src="viagem_motor.js" defer></script> -->
+
+</head>
+<body>
+  <header>
+    <img src="imagens/posto.png" alt="Frentista em um Posto de Gasolina">
+    <h1>Cálculo de Datas</h1>
+  </header>
+  <form id="formulario" action="#">
+    <!-- <div>
+      <label for="">Destino:</label>
+      <input type="text" placeholder="Vai viajar para onde?">
+    </div> -->
+
+    <div>
+      <label for="">Primeira data</label>
+      <input id="cx-distancia" type="number" placeholder="Dia/Mês/Ano">
+      
+    </div>
+
+    <div>
+      <label for="">Segunda data
+      </label>
+      <input id="cx-eletrico"  type="number" placeholder="Dia/Mês/Ano">
+    
+    </div>
+
+    
+    <div id="botoes">
+      <input type="reset" value="Limpar">
+      <input id="btn-calcular" onclick="comparar_datas(data1, data2,dia1,mes1,ano1,dia2,mes2,ano2)" type="submit" value="Calcular datas">
+    </div>
+
+  </form>
+
+  <script>
+function comparar_datas(data1, data2,dia1,mes1,ano1,dia2,mes2,ano2) {
+  const cx_dia1 = document.getElementById('cx_dia1')
+    const cx_mes1 = document.getElementById('cx_mes1')
+    const cx_ano1 = document.getElementById('cx_ano1')
+    const cx_dia2 = document.getElementById('cx_dia2')
+    const cx_mes2 = document.getElementById('cx_mes2')
+    const cx_ano2 = document.getElementById('cx_ano2')
+      
+    const dia1 = Number(cx_dia1.value)
+    const mes1 = Number(cx_mes1.value)
+    const ano1 = Number(cx_ano1.value)
+    const dia2 = Number(cx_dia2.value)
+    const mes2 = Number(cx_mes2.value)
+    const ano2 = Number(cx_ano2.value)
+    const data1 =  [dia1, mes1, ano1]; 
+    const data2 = [dia2, mes2, ano2] ;   
+
+    const [dia1, mes1, ano1] = data1;
+    const [dia2, mes2, ano2] = data2;
+    
+    if (ano1 > ano2) {
+        return "A primeira data é a mais recente.";
+    } else if (ano2 > ano1) {
+        return "A segunda data é a mais recente.";
+    } else {
+        if (mes1 > mes2) {
+            return "A primeira data é a mais recente.";
+        } else if (mes2 > mes1) {
+            return "A segunda data é a mais recente.";
+        } else {
+            if (dia1 > dia2) {
+                return "A primeira data é a mais recente.";
+            } else if (dia2 > dia1) {
+                return "A segunda data é a mais recente.";
+            } else {
+                return "As datas são iguais.";
+            }
+        }
+    }
+}
+
+const resultado = `**** RESULTADO *****
+        \nPrimeira data: ${data1.toFixed(1)}
+        \nSegunda data: ${data2.toFixed(1)}`
+
+alet(resultado);
+  </script>
+</body>
+</html>
